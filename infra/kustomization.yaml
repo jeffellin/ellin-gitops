@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - metallb
   - longhorn
+  - secretgen
 
 
 # Keep the ConfigMap name stable (no hash suffix)
