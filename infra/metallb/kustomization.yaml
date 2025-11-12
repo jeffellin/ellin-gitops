@@ -2,4 +2,4 @@ resources:
   - https://raw.githubusercontent.com/metallb/metallb/main/config/manifests/metallb-native.yaml
   - ipaddress-pool.yaml
 # Ensure resources are created in the metallb namespace
-namespace: external-dns
+namespace: metallb-system
