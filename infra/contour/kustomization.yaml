@@ -1,0 +1,4 @@
+resources:
+  - https://projectcontour.io/quickstart/contour.yaml
+# Ensure resources are created in the metallb namespace
+namespace: projectcontour
