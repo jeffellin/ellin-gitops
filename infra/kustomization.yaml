@@ -3,10 +3,9 @@ kind: Kustomization
 
 # Install MetalLB upstream manifest (native CRD-based install)
 resources:
-  - https://raw.githubusercontent.com/metallb/metallb/main/config/manifests/metallb-native.yaml
   - metallb
-# Ensure resources are created in the metallb namespace
-namespace: metallb-system
+  - longhorn
+
 
 # Keep the ConfigMap name stable (no hash suffix)
 generatorOptions:
