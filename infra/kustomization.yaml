@@ -6,6 +6,7 @@ resources:
   - metallb
   - longhorn
   - secretgen
+  - external-dns
 
 
 # Keep the ConfigMap name stable (no hash suffix)

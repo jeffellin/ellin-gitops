@@ -1,0 +1,4 @@
+resources:
+  - external-dns.yaml
+# Ensure resources are created in the metallb namespace
+namespace: external-dns
