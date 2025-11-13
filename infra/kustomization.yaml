@@ -8,6 +8,7 @@ resources:
   - secretgen
   - external-dns
   - contour
+  - cert-manager
 
 
 # Keep the ConfigMap name stable (no hash suffix)
