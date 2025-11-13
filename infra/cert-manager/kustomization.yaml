@@ -1,4 +1,2 @@
 resources:
   - https://github.com/cert-manager/cert-manager/releases/download/v1.16.2/cert-manager.yaml
-# Ensure resources are created in the metallb namespace
-namespace: cert-manager
