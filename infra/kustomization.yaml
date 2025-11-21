@@ -9,7 +9,7 @@ resources:
   - external-dns
   - contour
   - cert-manager
-
+  - nfs-subdir
 
 # Keep the ConfigMap name stable (no hash suffix)
 generatorOptions:
