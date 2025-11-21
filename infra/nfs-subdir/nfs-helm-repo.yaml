@@ -31,7 +31,7 @@ spec:
   values:
     nfs:
       server: 192.168.1.6
-      path: /nfs
+      path: /volume1/nfs
     storageClass:
       create: true
       defaultClass: false  # Set to true if you want this as the default StorageClass
