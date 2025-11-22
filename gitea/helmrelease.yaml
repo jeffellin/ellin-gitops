@@ -1,0 +1,43 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: gitea
+  namespace: gitea
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: gitea
+      sourceRef:
+        kind: HelmRepository
+        name: gitea
+        namespace: flux-system
+      version: "11.x"
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
+  values:
+    replicaCount: 1
+    image:
+      repository: gitea/gitea
+      tag: latest
+    service:
+      http:
+        type: ClusterIP
+        port: 3000
+      ssh:
+        type: ClusterIP
+        port: 22
+    persistence:
+      enabled: true
+      size: 10Gi
+    gitea:
+      admin:
+        username: gitea
+        password: "changeme"
+      config:
+        server:
+          PROTOCOL: http
+          DOMAIN: gitea.ellin.net
+          ROOT_URL: http://gitea.ellin.net/

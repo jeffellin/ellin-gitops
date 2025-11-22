@@ -1,5 +1,6 @@
 resources:
   - https://raw.githubusercontent.com/metallb/metallb/main/config/manifests/metallb-native.yaml
   - ipaddress-pool.yaml
+  - l2advertisement.yaml
 # Ensure resources are created in the metallb namespace
 namespace: metallb-system

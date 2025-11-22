@@ -1,0 +1,30 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: ellin-gitops
+  namespace: flux-system
+spec:
+  interval: 1m
+  ref:
+    branch: main
+  timeout: 60s
+  url: https://github.com/jeffellin/ellin-gitops
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ellin-gitops
+  namespace: flux-system
+spec:
+  force: false
+  interval: 10m
+  path: ./infra
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: ellin-gitops
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: external-dns
+  wait: true

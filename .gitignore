@@ -1,0 +1,14 @@
+# AWS Credentials - NEVER commit
+bootstrap/aws-credentials
+
+# Common IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+*.code-workspace

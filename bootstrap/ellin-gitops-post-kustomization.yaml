@@ -1,0 +1,21 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ellin-gitops-post
+  namespace: flux-system
+spec:
+  force: false
+  interval: 10m
+  path: ./post-config
+  prune: true
+  dependsOn:
+    - name: ellin-gitops
+  sourceRef:
+    kind: GitRepository
+    name: ellin-gitops
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: external-dns
+  wait: true
