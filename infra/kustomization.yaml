@@ -8,6 +8,7 @@ resources:
   - contour
   - cert-manager
   - nfs-subdir
+  - metrics-server
 
 # Keep the ConfigMap name stable (no hash suffix)
 generatorOptions:
