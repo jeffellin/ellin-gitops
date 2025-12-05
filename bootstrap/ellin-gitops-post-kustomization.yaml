@@ -17,5 +17,5 @@ spec:
   postBuild:
     substituteFrom:
       - kind: ConfigMap
-        name: external-dns
+        name: cluster-config
   wait: true
