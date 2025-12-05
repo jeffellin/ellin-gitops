@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ellin-gitops-pre
+  namespace: flux-system
+spec:
+  force: false
+  interval: 10m
+  path: ./infra-pre
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: ellin-gitops
+  wait: true

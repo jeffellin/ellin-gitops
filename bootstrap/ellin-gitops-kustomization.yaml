@@ -20,6 +20,8 @@ spec:
   interval: 10m
   path: ./infra
   prune: true
+  dependsOn:
+    - name: ellin-gitops-pre
   sourceRef:
     kind: GitRepository
     name: ellin-gitops

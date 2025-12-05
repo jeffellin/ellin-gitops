@@ -4,8 +4,6 @@ kind: Kustomization
 # Install MetalLB upstream manifest (native CRD-based install)
 resources:
   - metallb
-  - longhorn
-  - secretgen
   - external-dns
   - contour
   - cert-manager
