@@ -1,5 +1,6 @@
 resources:
   - namespace.yaml
+  - aws-credentials-import.yaml
   - external-dns.yaml
 # Ensure resources are created in the external-dns namespace
 namespace: external-dns
