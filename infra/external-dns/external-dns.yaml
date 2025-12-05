@@ -59,7 +59,7 @@ spec:
             - --registry=txt
             - --txt-owner-id=${external-dns-txt-id}
             # zone ID from credentials file
-            - --zone-id-filter=${R53_ZONE}
+            - --zone-id-filter=${R53_ZONE_ID}
           env:
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
