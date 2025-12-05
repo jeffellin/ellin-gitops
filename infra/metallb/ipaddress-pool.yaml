@@ -5,4 +5,4 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-  - ${metal-lb-address-pool}
+  - ${metal_lb_address_pool}

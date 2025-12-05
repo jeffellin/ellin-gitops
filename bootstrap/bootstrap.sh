@@ -29,10 +29,10 @@ kubectl create secret generic aws-credentials \
 
 echo "Creating cluster-config configmap..."
 kubectl create configmap cluster-config \
-  --from-literal=zone-id="$R53_ZONE" \
-  --from-literal=external-dns-txt-id="$CLUSTER_NAME" \
-  --from-literal=metal-lb-address-pool="$METALLB_ADDRESS_POOL" \
-  --from-literal=cert-email="$CERT_EMAIL" \
+  --from-literal=zone_id="$R53_ZONE" \
+  --from-literal=external_dns_txt_id="$CLUSTER_NAME" \
+  --from-literal=metal_lb_address_pool="$METALLB_ADDRESS_POOL" \
+  --from-literal=cert_email="$CERT_EMAIL" \
   --namespace=flux-system \
   --dry-run=client -o yaml | kubectl apply -f -
 

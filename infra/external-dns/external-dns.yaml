@@ -57,7 +57,7 @@ spec:
             - --source=service
             - --provider=aws
             - --registry=txt
-            - --txt-owner-id=${external-dns-txt-id}
+            - --txt-owner-id=${external_dns_txt_id}
             # zone ID from credentials file
             - --zone-id-filter=${R53_ZONE_ID}
           env:
@@ -74,4 +74,4 @@ spec:
             - name: AWS_REGION
               value: us-east-1   # adjust if needed
             - name: ROUTE53_ZONE_ID
-              value: ${zone-id}
+              value: ${zone_id}
