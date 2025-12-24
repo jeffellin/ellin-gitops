@@ -10,8 +10,8 @@ metadata:
   namespace: keycloak
 spec:
   interval: 12h
-  type: oci
-  url: oci://registry-1.docker.io/bitnamicharts
+  type: helm
+  url: https://charts.bitnami.com/bitnami
 ---
 apiVersion: v1
 kind: Secret
