@@ -1,2 +1,4 @@
 resources:
   - keycloak.yaml
+
+namespace: keycloak
