@@ -66,12 +66,27 @@ spec:
       enabled: true
       mode: edge
 
+    cache:
+      enabled: true
+      stackName: kubernetes
+      stackFile: ""
+
+    persistence:
+      enabled: false
+
     postgresql:
       enabled: true
       auth:
         username: "keycloak"
         password: "keycloak123"
         database: "keycloak"
+      primary:
+        persistence:
+          enabled: true
+          storageClass: "nfs-client"
+          accessModes:
+            - ReadWriteOnce
+          size: 8Gi
 
     resources:
       requests:
