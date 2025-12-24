@@ -3,16 +3,15 @@ kind: Namespace
 metadata:
   name: keycloak
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: OCIRepository
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
 metadata:
-  name: keycloak
+  name: bitnami
   namespace: keycloak
 spec:
   interval: 12h
-  url: oci://registry-1.docker.io/bitnamicharts/keycloak
-  ref:
-    tag: "24.0.5"
+  type: oci
+  url: oci://registry-1.docker.io/bitnamicharts
 ---
 apiVersion: v1
 kind: Secret
@@ -34,9 +33,10 @@ spec:
   chart:
     spec:
       chart: keycloak
+      version: '24.0.5'
       sourceRef:
-        kind: OCIRepository
-        name: keycloak
+        kind: HelmRepository
+        name: bitnami
         namespace: keycloak
       interval: 12h
   values:
