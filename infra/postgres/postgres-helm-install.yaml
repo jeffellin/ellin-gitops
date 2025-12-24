@@ -10,7 +10,7 @@ metadata:
   namespace: postgres
 spec:
   interval: 1h
-  url: https://charts.postgresql.io
+  url: https://cloudnative-pg.io/charts
 ---
 apiVersion: v1
 kind: Secret
@@ -33,7 +33,7 @@ spec:
   targetNamespace: postgres
   chart:
     spec:
-      chart: postgresql
+      chart: cloudnative-pg
       version: '*'
       sourceRef:
         kind: HelmRepository
@@ -41,29 +41,5 @@ spec:
         namespace: postgres
       interval: 12h
   values:
-    global:
-      postgresql:
-        username: appuser
-        password: "changeme456"
-        database: myapp
-    
-    postgresql:
-      initdb:
-        username: postgres
-        password: "changeme123"
-    
-    service:
-      type: LoadBalancer
-    
-    persistence:
-      enabled: true
-      storageClass: "nfs-client"
-      size: 8Gi
-    
-    resources:
-      requests:
-        memory: "256Mi"
-        cpu: "250m"
-      limits:
-        memory: "512Mi"
-        cpu: "500m"
+    crds:
+      create: true
