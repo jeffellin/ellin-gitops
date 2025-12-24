@@ -62,9 +62,7 @@ spec:
             - keycloak.ellin.net
           secretName: keycloak-tls
 
-    proxy:
-      enabled: true
-      mode: edge
+    proxy: edge
 
     cache:
       enabled: true
