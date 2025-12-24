@@ -6,11 +6,11 @@ metadata:
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: bitnami
+  name: postgresql
   namespace: postgres
 spec:
   interval: 1h
-  url: https://charts.bitnami.com/bitnami
+  url: https://charts.postgresql.io
 ---
 apiVersion: v1
 kind: Secret
@@ -34,41 +34,36 @@ spec:
   chart:
     spec:
       chart: postgresql
-      version: '16.2.1'
+      version: '*'
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: postgresql
         namespace: postgres
       interval: 12h
   values:
-    auth:
-      enablePostgresUser: true
-      existingSecret: "postgresql-secrets"
-      secretKeys:
-        adminPasswordKey: "postgres-password"
-        userPasswordKey: "password"
-        replicationPasswordKey: "replication-password"
-      username: "appuser"
-      database: "myapp"
+    global:
+      postgresql:
+        username: appuser
+        password: "changeme456"
+        database: myapp
     
-    primary:
-      service:
-        type: LoadBalancer
-      
-      persistence:
-        enabled: true
-        storageClass: "nfs-client"
-        accessModes:
-          - ReadWriteOnce
-        size: 8Gi
-      
-      resources:
-        requests:
-          memory: "256Mi"
-          cpu: "250m"
-        limits:
-          memory: "512Mi"
-          cpu: "500m"
+    postgresql:
+      initdb:
+        username: postgres
+        password: "changeme123"
     
-    metrics:
-      enabled: false
+    service:
+      type: LoadBalancer
+    
+    persistence:
+      enabled: true
+      storageClass: "nfs-client"
+      size: 8Gi
+    
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
