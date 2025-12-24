@@ -9,6 +9,8 @@ resources:
   - cert-manager
   - nfs-subdir
   - metrics-server
+  - postgres
+  - keycloak
 
 # Keep the ConfigMap name stable (no hash suffix)
 generatorOptions:

@@ -30,10 +30,11 @@ metadata:
   namespace: postgres
 spec:
   interval: 30m
+  targetNamespace: postgres
   chart:
     spec:
       chart: postgresql
-      version: '15.x'
+      version: '16.2.1'
       sourceRef:
         kind: HelmRepository
         name: bitnami
@@ -50,7 +51,15 @@ spec:
       username: "appuser"
       database: "myapp"
     
+    image:
+      registry: docker.io
+      repository: bitnami/postgresql
+      tag: "16.6.0-debian-12-r2"
+    
     primary:
+      service:
+        type: LoadBalancer
+      
       persistence:
         enabled: true
         storageClass: "nfs-client"
