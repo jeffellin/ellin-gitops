@@ -1,2 +1,2 @@
 resources:
-  - keycloak-helm-install.yaml
+  - keycloak.yaml
