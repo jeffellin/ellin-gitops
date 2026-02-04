@@ -5,6 +5,7 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: default
   name: dummy-external-service
   annotations:
     external-dns.alpha.kubernetes.io/hostname: minio.ellin.net
@@ -16,6 +17,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: s3-external-service
+  namespace: default
   annotations:
     external-dns.alpha.kubernetes.io/hostname: s3.ellin.net
 spec:
@@ -26,6 +28,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: devhost-external-service
+  namespace: default
   annotations:
     external-dns.alpha.kubernetes.io/hostname: dev.ellin.net
 spec:
