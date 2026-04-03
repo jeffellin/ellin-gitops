@@ -1,0 +1,57 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ellin-gitops-pre
+  namespace: flux-system
+spec:
+  force: false
+  interval: 10m
+  path: ./infra-pre
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: ellin-gitops
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ellin-gitops
+  namespace: flux-system
+spec:
+  force: false
+  interval: 10m
+  path: ./infra
+  prune: true
+  dependsOn:
+    - name: ellin-gitops-pre
+  sourceRef:
+    kind: GitRepository
+    name: ellin-gitops
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-config
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ellin-gitops-post
+  namespace: flux-system
+spec:
+  force: false
+  interval: 10m
+  path: ./clusters/homelab-1/post-config
+  prune: true
+  dependsOn:
+    - name: ellin-gitops
+  sourceRef:
+    kind: GitRepository
+    name: ellin-gitops
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-config
+  wait: true
