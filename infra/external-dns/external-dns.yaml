@@ -53,6 +53,7 @@ spec:
         - name: external-dns
           image: k8s.gcr.io/external-dns/external-dns:v0.14.0
           args:
+            - --source=contour-httpproxy
             - --source=ingress
             - --source=service
             - --provider=aws
