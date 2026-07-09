@@ -27,10 +27,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: devhost-external-service
+  name: dashboard-external-service
   namespace: default
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: dev.ellin.net
+    external-dns.alpha.kubernetes.io/hostname: dashboard.ellin.net
 spec:
   type: ExternalName
-  externalName: 192.168.1.218
+  externalName: 192.168.1.208
