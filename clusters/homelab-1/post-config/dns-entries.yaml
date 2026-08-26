@@ -34,3 +34,14 @@ metadata:
 spec:
   type: ExternalName
   externalName: 192.168.1.208
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pve-external-service
+  namespace: default
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: pve.ellin.net
+spec:
+  type: ExternalName
+  externalName: 192.168.1.52
