@@ -50,10 +50,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: pve-external-service
+  name: dash-external-service
   namespace: default
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: dashy.ellin.net
+    external-dns.alpha.kubernetes.io/hostname: dash.ellin.net
 spec:
   type: ExternalName
   externalName: 192.168.10.53
